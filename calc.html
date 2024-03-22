@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Calculator responsive</title>
+    <style>
+        body{
+            background-color: rgb(153, 139, 155);
+        }
+        .calculator{
+            width: 25%;
+            height: auto;
+            margin: 150px auto;
+            border: 1px solid #000;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #484646;
+            background-color: rgb(104, 167, 167);
+        }
+        input{
+            margin: 13px;
+            padding: 8px;
+            font-size: 22px;
+            width: 82%;
+            outline: none;
+            border: none;
+            border: 2px solid #534f4f;
+            border-radius: 5px;
+        }
+        .buttons{
+            margin: 12px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-gap: 5px;
+        }
+        button{
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+  
+        button:hover{
+            background-color: #ddd;
+        }
+        @media screen and (min-width: 50px) {
+            .calculator{
+                width: 250px;
+            }
+            
+        }
+        h2{
+          padding: 5px 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Calculator</h2>
+    <div class="calculator">
+        <input id="display" type="text" placeholder="0" readonly>
+        <div class="buttons">
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="del()">DEL</button>
+            <button onclick="clearDisplay()">AC</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('/')">/</button>
+            <button onclick="appendToDisplay('%')">%</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('*')">*</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('00')">00</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="appendToDisplay('+')">+</button>
+            <button onclick="result('display')">=</button>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    function appendToDisplay(value){
+        document.getElementById('display').value += value;
+    }
+    //Get element by user
+    function clearDisplay(){
+        document.getElementById('display').value = '';
+    }
+
+    //Calculate Result
+    function result(){
+        var res = eval(document.getElementById('display').value);
+        document.getElementById('display').value = res;
+    }
+
+    //Delete numbers 1 by 1
+    function del(){
+        let display = document.getElementById('display').value;
+        display = display.slice(0, -1);
+        document.getElementById('display').value = display;
+    }
+</script>
+</html>
